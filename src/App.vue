@@ -1,32 +1,34 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h1 class="text-center">VUEX</h1>
+        <hr>
+        <app-result :counter="counter"></app-result>
+        <hr>
+        <app-second-result :counter="counter"></app-second-result>
+        <hr>
+        <app-counter @counterEvent="counter += $event"></app-counter>
+      </div>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import SecondResult from '@/components/SecondResult.vue';
+import Result from './components/Result.vue';
+import Counter from './components/Counter.vue';
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  data() {
+    return {
+      counter: 0,
+    };
+  },
+  components: {
+    appResult: Result,
+    appCounter: Counter,
+    appSecondResult: SecondResult,
+  },
+};
+</script>
